@@ -1,0 +1,61 @@
+<title>NSO RAZE</title>
+
+<div class="container">
+    <div class="slider">
+     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+         <div class="carousel-indicators">
+           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+           
+         </div>
+         <div class="carousel-inner">
+           <div class="carousel-item active">
+             <img src="/assets/images/banner3.jpg" class="d-block w-100" alt="banner1">
+           </div>
+          
+          
+         </div>
+         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Previous</span>
+         </button>
+         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+           <span class="visually-hidden">Next</span>
+         </button>
+       </div>
+    </div>
+    <div class="welcome">
+         <div class="title">
+             <h3>CHÀO MỪNG CÁC BẠN ĐẾN VỚI NSO BLUE</h3>
+         </div>
+         <div class="content">
+             <p class="mark">- SERVER NÀY DO ĐỘI NGŨ THANH SON PHÁT TRIỂN VÀ VẬN HÀNH!</p>
+             <p>- Server này có nhiều chức năng mới lạ cũng như lượng tài nguyên đủ để anh em sử dụng.</p>
+             <p>- Server nhiều item mới lạ sẽ sớm được cập nhật nếu đông đảo người chơi có nhu cầu!</span></p>
+             <p>- Các chức năng như <span class="mark">Luyện bí kíp, Nhiệm vụ, Nhiệm vụ danh vọng, Mắt,...</span> sẽ sớm được cập nhật nếu đông đảo người chơi có nhu cầu!</p>
+            
+             <p>- Các vấn đề liên quan tới <span class="mark">Game, Báo lỗi, Góp ý, Thông báo</span> từ server bạn có thể xem tại <a href="{{route('index.news')}}">Tin tức</a> | <a href="https://zalo.me/g/kjffpd593">Group</a> | <a href="https://zalo.me/g/kjffpd593">Box Zalo</a></p>
+             <br>
+             <p><span class="italicized">** Server này do những người am hiểu nhất về từng chỉ số của game Ninja School phát triển và vận hành...</span></p>
+         </div>
+         <hr>
+         <div class="title">
+             <h3>LỐI TẮT</h3>
+         </div>
+         <div class="content">
+            <div class="shortcut">
+                <a href="/tin-tuc" class="btn btn-nso"><i class="fas fa-bell"></i> TIN TỨC</a>
+                <%if(isLogin){%>
+                  <a href="/trang-ca-nhan" class="btn btn-nso"><i class="fa-solid fa-circle-info"></i> Thông tin tài khoản</a>
+                  <a href="/chuc-nang" class="btn btn-nso"><i class="fas fa-money-check-alt"></i> Nạp tiền</a>
+               <% } else { %>
+                 <a href="/dang-nhap" class="btn btn-nso"><i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP</a>
+                 <a href="/dang-ky" class="btn btn-nso"><i class="fa-solid fa-user-plus"></i> ĐĂNG KÝ</a>
+              <% } %>
+                <a href="/tai-ve" class="btn btn-nso"><i class="fa-solid fa-download"></i> TẢI GAME</a>
+                <a href="https://zalo.me/g/yqvhhy088" target=”_blank” class="btn btn-primary"><i class="fa-solid fa-users"></i> GROUP FACEBOOK</a>
+				        <a href="https://zalo.me/g/yqvhhy088" target=”_blank” class="btn btn-primary"><i class="fa-solid fa-users"></i> BOX ZALO</a>
+            </div>
+         </div>
+    </div>
+</div>

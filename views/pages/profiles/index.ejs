@@ -1,0 +1,84 @@
+<title>Thông tin tài khoản</title>
+
+
+<div class="container">
+    <div class="chuc-nang">
+        <div class="title">
+            <h3>THÔNG TIN TÀI KHOẢN</h3>
+        </div>
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div class="card text-dark bg-light mb-3">
+                        <div class="card-header bg-dark"></div>
+                        <div class="card-body">
+                          <h5 class="card-title">Lượng: <span style="color:red;"><%=user.luong.toLocaleString()%></span></h5>
+                          <hr>
+                          <%if(user.lock == 1) { %>
+                            <a id="activeAccount" data-url="{{route('auth.active')}}" class="btn btn-danger mt-1"><i class="fas fa-user-check"></i> KÍCH HOẠT CHÍNH THỨC (15k)</a>
+                         <% } else if(user.status == 1) { %>
+                          <a id="upgradeAccount" data-url="{{route('auth.upgrade')}}" class="btn btn-danger mt-1"><i class="fas fa-user-check"></i> NÂNG CẤP TÀI KHOẢN (15k)</a>
+                         <% } %>
+                            <a id="btnChucNang" href="#/chuc-nang" class="btn btn-warning mt-1"><i class="fas fa-coins"></i> Nạp coin</a>
+                            <a id="btnLichSu" href="#/lich-su"  class="btn btn-success mt-1"><i class="fas fa-history"></i> Lịch sử giao dịch</a>
+                            <a  id="btnDmk" href="/doi-mat-khau"  class="btn btn-primary mt-1"><i class="fas fa-exchange-alt"></i> Đổi mật khẩu</a>
+                          <hr>
+                          <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Tài khoản:</label>
+                                    <input type="text" class="form-control" value="<%=user.username%>" disabled>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Trạng thái tài khoản:</label>
+                                    <%if(user.ban == 1) {%>
+                                      <input type="text" class="form-control" value=" TÀI KHOẢN BỊ KHOÁ DO VI PHẠM QUY ĐỊNH SERVER " disabled>
+                                    <%}  else if(user.lock == 1) { %>
+                                      <input type="text" class="form-control" value=" Chưa kích hoạt" disabled>
+                                   <% } else { %>
+                                    <input type="text" class="form-control" value="  <%=user.status == 0 ?  'TÀI KHOẢN CHÍNH THỨC' : 'TÀI KHOẢN TRẢI NGHIỆM' %>" disabled>
+                                   <%} %>
+                                </div>
+								                <div class="mb-3">
+                                    <label class="form-label">Tài khoản giới thiệu:</label>
+                                    <%if(user.lock == 1) { %>
+                                      <input type="text" class="form-control" id="invite" name="invite" value="<%=user.invite%>"  >
+                                   <% } else { %>
+                                      <input type="text" class="form-control" id="invite" name="invite" value="<%=user.invite%>" disabled>
+                                  <% } %>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email :</label>
+                                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Nhập email lấy lại mật khẩu..." value="<%=user.email%>">
+                                    <div id="emailChange" class="invalid-feedback"></div>
+                                    </div>
+                                <a id="changeEmail" data-url="{{route('auth.email')}}" class="btn btn-success mt-1"><i class="fas fa-sync-alt"></i> Cập nhật</a>
+                            </form>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script async>
+      let $btnDmk = document.querySelector('#btnDmk');
+      let $btnChucNang = document.querySelector('#btnChucNang');
+      let $btnLichSu = document.querySelector('#btnLichSu');
+
+      let arr = [$btnChucNang, $btnLichSu]
+      arr.forEach(($btn) => {
+        $btn.addEventListener('click', function() {
+          Swal.fire({
+            title: "Tính năng",
+            text: "Tính năng đang được phát triển, vui lòng thử lại sau",
+            icon: "info",
+            showConfirmButton: true,
+          })
+        })
+      })
+   
+</script>
+
+

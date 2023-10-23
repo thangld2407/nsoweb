@@ -1,0 +1,22 @@
+<title>Tải game</title>
+
+<div class="container">
+    <div class="chuc-nang">
+        <div class="title">
+            <h3>TẢI GAME</h3>
+        </div>
+        <div class="content">
+            <div class="news">
+                <%if(files) { %>
+                  <% files.forEach(function(item){ %>
+                    <a href="<%=item.link%>" class="btn btn-success btn-login"><%=item.name%></a>
+                    <hr>
+                  <% }) %>
+                <% }%>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
