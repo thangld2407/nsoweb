@@ -4,9 +4,6 @@
       <div class="col">
         <a class="btn btn-sm btn-success w-100 fw-semibold active" href="/user" style="background-color: rgb(99, 171, 171);">Tài khoản</a>
       </div>
-      <div class="col">
-        <a class="btn btn-sm btn-success w-100 fw-semibold false" href="/lich-su" style="background-color: rgb(99, 171, 171);">Lịch sử GD</a>
-      </div>
     </div>
   </div>
   <hr>
@@ -18,22 +15,11 @@
       </tr>
       <tr class="fw-semibold">
         <td>Mật khẩu</td>
-        <td>*** (<a href="doi-mat-khau">Đổi mật khẩu</a>)</td>
+        <td>*** (<a href="/change-password">Đổi mật khẩu</a>)</td>
       </tr>
       <tr class="fw-semibold">
         <td>Số dư</td>
-        <td><a style="color:#157347;">0 Coin</a></td>
-      </tr>
-      <tr class="fw-semibold">
-        <td>Số điện thoại</td>
-        <td>0391123111 (<a class="cursor-pointer text-primary">Thay đổi</a>)
-        </td>
-      </tr>
-      <tr class="fw-semibold">
-        <td>Link giới thiệu</td>
-        <td>
-          <span class="cursor-pointer text-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy">Click để copy</span>
-        </td>
+        <td><a style="color:#157347;"><%=user.luong%> Luong</a></td>
       </tr>
       <tr class="fw-semibold">
         <td>Trạng thái</td>

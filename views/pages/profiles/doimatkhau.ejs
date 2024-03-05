@@ -1,104 +1,85 @@
-<title>Đổi mật khẩu</title>
-
-<div class="container">
-    <div class="chuc-nang">
-        <div class="title">
-            <h3>ĐỔI MẬT KHẨU</h3>
-        </div>
-        <div class="content">
-            <div class="row">
-                <div class="col-md-12 col-lg-12">
-                    <div class="card text-dark bg-light mb-3">
-                        <div class="card-header bg-dark"></div>
-                        <div class="card-body">
-                            <form>
-                                <div class="mb-3">
-                                  <label for="oldPass" class="form-label">Mật khẩu cũ: </label>
-                                  <input type="password" class="form-control" id="oldPass" name="oldPass" placeholder="Nhập mật khẩu cũ..." >
-                                  <div class="invalid-feedback" id="info-oldPass"></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Mật mới: </label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu mới..." >
-                                    <div class="invalid-feedback" id="info-password"></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="confirmPassword" class="form-label">Xác nhận mật khẩu mới: </label>
-                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Xácn nhận mật khẩu mới..." >
-                                    <div class="invalid-feedback" id="info-confirmPassword"></div>
-                                </div>
-            
-                                <a id="changePass" data-url="/api/auth/changepw" class="btn btn-success">Đổi mật khẩu</a>
-                            </form>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </div>
+<div class="w-100 d-flex justify-content-center">
+  <form id="changePw" class="pb-3" style="width: 26rem;">
+    <div class="fs-5 fw-bold text-center mb-3">Đổi mật khẩu</div>
+    <div class="mb-2">
+      <div class="input-group">
+        <input name="oldPassword" type="text" autocomplete="off" placeholder="Nhập mật khẩu hiện tại" class="form-control form-control-solid" value="">
+      </div>
     </div>
+    <div class="mb-2">
+      <div class="input-group">
+        <input name="password" type="password" autocomplete="off" placeholder="Mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)">
+      </div>
+    </div>
+    <div class="mb-2">
+      <div class="input-group">
+        <input name="password_confirmation" type="password" autocomplete="off" placeholder="Nhập lại mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)">
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <button type="submit" class="me-3 btn btn-success" id="btnChangePassword">Đổi mật khẩu</button>
+    </div>
+  </form>
 </div>
 
 <script>
-  let $btnChangePass = document.querySelector('#changePass');
+  let $btnChangePass = document.querySelector('#btnChangePassword');
   $btnChangePass.addEventListener('click', function(e) {
     e.preventDefault();
-     Swal.fire({
-         title: 'Xác nhận đổi lại mật khẩu!',
-         icon: 'warning',
-         showCancelButton: true,
-         confirmButtonColor: '#3085d6',
-         cancelButtonColor: '#d33',
-         confirmButtonText: 'Có!',
-         cancelButtonText: 'Không!',
-       }).then((result) => {
-         if (result.isConfirmed) {
-             var password = $('#oldPass').val()
-             var newPassword = $('#password').val()
-             var confirmPassword = $('#confirmPassword').val()
-             var type = "POST"
-             var url = $(this).attr('data-url')
-             $.ajax({
-                 type: type,
-                 url: url,
-                 data: {
-                     oldPassword: password,
-                     password: newPassword,
-                     password_confirmation: confirmPassword,
-                 },
-                 dataType: 'json',
-                 success: function (response) {
-                     const {error_code} = response
-                     if (!error_code) {
-                         Swal.fire({
-                             title: "Đổi mật khẩu thành công! Vui lòng đăng nhập lại",
-                             icon: "success",
-                             showConfirmButton: true,
-                         }).then(() => {
-                          window.location.href = "/"
-                         })
-                         $("#oldPass").val("")
-                         $("#password").val("")
-                         $("#confirmPassword").val("")
+    Swal.fire({
+      title: 'Xác nhận đổi lại mật khẩu!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Có!',
+      cancelButtonText: 'Không!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        var password = $('#oldPass').val()
+        var newPassword = $('#password').val()
+        var confirmPassword = $('#confirmPassword').val()
+        var type = "POST"
+        var url = "/api/auth/changepw"
+        const data = $('#changePw').serialize()
+        $.ajax({
+          type: type,
+          url: url,
+          data,
+          dataType: 'json',
+          success: function(response) {
+            const {
+              error_code
+            } = response
+            if (!error_code) {
+              Swal.fire({
+                title: "Đổi mật khẩu thành công! Vui lòng đăng nhập lại",
+                icon: "success",
+                showConfirmButton: true,
+              }).then(() => {
+                window.location.href = "/"
+              })
+              $("#oldPass").val("")
+              $("#password").val("")
+              $("#confirmPassword").val("")
 
-                     } else {
-                         Swal.fire({
-                             title: response.message,
-                             icon: "error",
-                             showConfirmButton: true,
-                         })
-                     }
-                 },
-                 error: function (response) {
-                         Swal.fire({
-                             title: "Lỗi!",
-                             icon: "error",
-                             showConfirmButton: true,
-                         })
-                 }
-             })
-         }
-     })
+            } else {
+              Swal.fire({
+                title: response.message,
+                icon: "error",
+                showConfirmButton: true,
+              })
+            }
+          },
+          error: function(response) {
+            Swal.fire({
+              title: "Lỗi!",
+              icon: "error",
+              showConfirmButton: true,
+            })
+          }
+        })
+      }
+    })
   })
- </script>
-
-
+</script>
