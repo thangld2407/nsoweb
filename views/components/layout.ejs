@@ -42,7 +42,7 @@
                 <% if(isLogin) { %>
                 <div class="mt-3">
                   <a class="mb-3 px-2 py-1 fw-semibold text-dark bg-success bg-opacity-25 border border-success border-opacity-75 rounded-2 link-success cursor-pointer" href="/user">
-                    <span>thangld - 0 C </span>
+                    <span><%=user.username%> - <%=user.luong%> </span>
                   </a>
                   <span>&nbsp;</span>
                   <a class="mb-3 px-2 py-1 fw-semibold text-dark bg-success bg-opacity-25 border border-success border-opacity-75 rounded-2 link-success cursor-pointer" href="/logour">
@@ -53,84 +53,6 @@
 
                 <body>
                   <main class="flex-grow-1 flex-shrink-1">
-                    <!-- Modal HTML -->
-                    <div id="regOK" class="modal">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <span class="close" onclick="closeRegOK()">&times;</span>
-                          <div class="modal-body text-center">
-                            <a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a>
-                            <h2>Đăng Ký thành công</h2>
-                            <p id="regOKContent"></p>
-                            <button class="modal-close-btn" onclick="closeRegOK()">OK</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Modal HTML -->
-                    <div id="regFailModal" class="modal">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <span class="close" onclick="closeRegFailModal()">&times;</span>
-                          <div class="modal-body text-center">
-                            <a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a>
-                            <h2>Đăng ký thất bại</h2>
-                            <p id="regFailModalContent"></p>
-                            <button class="modal-close-btn" onclick="closeRegFailModal()">OK</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-
-                    <!-- Modal HTML -->
-                    <div id="loginFailModal" class="modal">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <span class="close" onclick="closeLoginFailModal()">&times;</span>
-                          <div class="modal-body text-center">
-                            <a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a>
-                            <h2>Đăng nhập thất bại</h2>
-                            <p id="loginFailModalContent"></p>
-                            <button class="modal-close-btn btn btn-danger" onclick="closeLoginFailModal()">OK</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <script>
-                      function openRegOK() {
-                        var regOK = document.getElementById('regOK');
-                        regOK.style.display = 'block';
-                      }
-
-                      function closeRegOK() {
-                        var regOK = document.getElementById('regOK');
-                        regOK.style.display = 'none';
-                      }
-
-                      function openRegFailModal() {
-                        var regFailModal = document.getElementById('regFailModal');
-                        regFailModal.style.display = 'block';
-                      }
-
-                      function closeRegFailModal() {
-                        var regFailModal = document.getElementById('regFailModal');
-                        regFailModal.style.display = 'none';
-                      }
-
-                      function openLoginFailModal() {
-                        var loginFailModal = document.getElementById('loginFailModal');
-                        loginFailModal.style.display = 'block';
-                      }
-
-                      function closeLoginFailModal() {
-                        var loginFailModal = document.getElementById('loginFailModal');
-                        loginFailModal.style.display = 'none';
-                      }
-                    </script>
 
                     <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -143,7 +65,7 @@
 
                               <div class="mb-2">
                                 <div class="input-group">
-                                  <input name="username" id="username" type="text" autocomplete="off" placeholder="Tên đăng nhập" class="form-control form-control-solid" value="" minlength="5" required>
+                                  <input name="username" type="text" autocomplete="off" placeholder="Tên đăng nhập" class="form-control form-control-solid" value="" minlength="5" required>
                                   <div class="invalid-feedback">Không được bỏ trống
                                   </div>
                                 </div>
@@ -151,7 +73,7 @@
                               </div>
                               <div class="mb-2">
                                 <div class="input-group">
-                                  <input name="password" id="password" type="password" autocomplete="off" placeholder="Mật khẩu" class="form-control form-control-solid" value="" minlength="5" required>
+                                  <input name="password" type="password" autocomplete="off" placeholder="Mật khẩu" class="form-control form-control-solid" value="" minlength="5" required>
                                   <div class="invalid-feedback">Không được bỏ trống
                                   </div>
                                 </div>
@@ -177,32 +99,32 @@
                             <div class="my-2">
                               <div class="text-center"><a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a></div>
                             </div>
-                            <form action="#" method="post" class="py-3 mx-3 needs-validation" id="register">
+                            <form class="py-3 mx-3 needs-validation" id="register">
                               <!--thông báo đăng ký-->
                               <div class="mb-2">
                                 <label class="fw-semibold">Tên đăng nhập</label>
-                                <div class="input-group"><input name="regname" id="regname" type="text" autocomplete="off" placeholder="Nhập tên đăng nhập" class="form-control form-control-solid" value="" oninput="validateUsername(this)"></div>
+                                <div class="input-group"><input name="username" type="text" autocomplete="off" placeholder="Nhập tên đăng nhập" class="form-control form-control-solid" value="" oninput="validateUsername(this)"></div>
                                 <div class="invalid-feedback">Không được bỏ trống</div>
                               </div>
                               <div class="mb-2">
                                 <label class="fw-semibold">Số điện thoại</label>
 
-                                <div class="input-group"><input name="regphone" id="regphone" type="tel" autocomplete="off" placeholder="Nhập số điện thoại" pattern="[0-9]+" title="Số điện thoại chỉ được chứa số. Vui lòng không sử dụng ký tự đặc biệt." class="form-control form-control-solid" value=""></div>
+                                <div class="input-group"><input name="email" id="email" type="tel" autocomplete="off" placeholder="Nhập số điện thoại" pattern="[0-9]+" title="Số điện thoại chỉ được chứa số. Vui lòng không sử dụng ký tự đặc biệt." class="form-control form-control-solid" value=""></div>
                                 <div class="invalid-feedback">Không được bỏ trống</div>
                               </div>
 
                               <div class="mb-2">
                                 <label class="fw-semibold">Mật khẩu</label>
-                                <div class="input-group"><input name="regpass" id="regpassregpass" type="password" autocomplete="off" placeholder="Nhập mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)"></div>
+                                <div class="input-group"><input name="password" type="password" autocomplete="off" placeholder="Nhập mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)"></div>
                                 <div class="invalid-feedback">Không được bỏ trống</div>
                               </div>
                               <div class="mb-2">
                                 <label class="fw-semibold">Nhập lại mật khẩu</label>
-                                <div class="input-group"><input name="regrepass" id="regrepass" type="password" autocomplete="off" placeholder="Nhập mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)"></div>
+                                <div class="input-group"><input name="confirmPassword" id="confirmPassword" type="password" autocomplete="off" placeholder="Nhập mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)"></div>
                                 <div class="invalid-feedback">Không được bỏ trống</div>
                               </div>
                               <div class="text-center mt-3">
-                                <button type="submit" class="me-3 btn btn-primary">Đăng
+                                <button type="submit" class="me-3 btn btn-primary" id="btnRegister">Đăng
                                   ký</button><button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Hủy bỏ</button>
                                 <div class="pt-3">Bạn đã có tài khoản? <a data-bs-toggle="modal" data-bs-target="#modalLogin" class="link-primary cursor-pointer">Đăng nhập
                                     ngay</a></div>
@@ -252,27 +174,86 @@
                                 status_code
                               } = response;
                               if (status_code) {
-                                openRegOK()
+                                Swal.fire({
+                                  title: 'Đăng nhập thành công!',
+                                  icon: 'success',
+                                  showConfirmButton: false
+                                });
                                 setTimeout(function() {
-                                  window.location.href = "/";
+                                  window.location.href = '/';
                                 }, 1300);
                               } else {
-                                $('#modalLogin').modal('hide')
-                                openLoginFailModal()
-                                setTimeout(() => {
-                                  window.location.reload()
-                                }, 500)
+                                Swal.fire({
+                                  title: 'Lỗi rồi',
+                                  text: response.message,
+                                  icon: 'error',
+                                  showConfirmButton: true
+                                });
+
                               }
                             },
                             error: function(response) {
-                              $('#modalLogin').modal('hide')
-                              openLoginFailModal()
-                              setTimeout(() => {
-                                window.location.reload()
-                              }, 500)
+                              Swal.fire({
+                                title: 'Lỗi!',
+                                text: 'Hãy liên hệ BQT để biết thêm chi tiết',
+                                icon: 'error',
+                                showConfirmButton: true
+                              });
                             }
                           });
                         }
+
+                        $('#btnRegister').click(function(e) {
+                          e.preventDefault();
+                          var data = $('#register').serialize();
+                          var type = 'POST';
+                          var url = "/api/auth/register"
+                          var urlHome = "/"
+                          $.ajax({
+                            type: type,
+                            url: url,
+                            data: data,
+                            dataType: 'json',
+                            success: function(response) {
+                              const {
+                                status_code
+                              } = response;
+                              if (status_code) {
+                                Swal.fire({
+                                  title: 'Đăng ký thành công!',
+                                  icon: 'success',
+                                  showConfirmButton: false
+                                });
+                                setTimeout(function() {
+                                  window.location.href = urlHome;
+                                }, 1300);
+                              } else {
+                                Swal.fire({
+                                  title: 'Lỗi rồi',
+                                  text: response.message,
+                                  icon: 'error',
+                                  showConfirmButton: true
+                                });
+                              }
+                            },
+                            error: function(response) {
+                              Swal.fire({
+                                title: 'Lỗi!',
+                                text: 'Hãy liên hệ BQT để biết thêm chi tiết',
+                                icon: 'error',
+                                showConfirmButton: true
+                              });
+                            }
+                          });
+                        });
+
+                        document.querySelector('#modalLogin').addEventListener('show.bs.modal', function(e) {
+                          $('#formLogin')[0].reset()
+                        })
+
+                        document.querySelector('#modalRegister').addEventListener('show.bs.modal', function(e) {
+                          $('#register')[0].reset()
+                        })
                       </script>
                     </div>
                   </main>
@@ -294,13 +275,13 @@
                 <a href="/download" class="btn btn-menu btn-success w-100 fw-semibold false">Tải game</a>
               </div>
             </div>
+            <% if(!isLogin) { %>
             <div class="col">
-              <% if(!isLogin) { %>
               <div class="px-2">
                 <a class="btn btn-menu btn-success w-100 fw-semibold false" data-bs-toggle="modal" data-bs-target="#modalLogin">Đăng nhập</a>
               </div>
-              <% } %>
             </div>
+            <% } %>
             <div class="col">
               <div class="px-2"><a class="btn btn-menu btn-success w-100 fw-semibold false" href="https://zalo.me/g/yqvhhy088">Box Zalo</a>
               </div>
@@ -386,7 +367,7 @@
                       khoản hiện đang bảo trì, Vui lòng liên hệ <a class="text-success fw-bold" href="https://zalo.me/g/yqvhhy088">Admin</a> <a class="text-danger fw-semibold mt-3">nhé!</a></a></div>
                   <div class="mb-2 tuan1">
                     <label class="fw-semibold">Tên đăng nhập</label>
-                    <div class="input-group"><input name="username" id="username" type="text" autocomplete="off" placeholder="Nhập tên đăng nhập" class="form-control form-control-solid" value=""></div>
+                    <div class="input-group"><input name="username" type="text" autocomplete="off" placeholder="Nhập tên đăng nhập" class="form-control form-control-solid" value=""></div>
                   </div>
                   <div class="mb-2 tuan1">
                     <label class="fw-semibold">Địa chỉ mail đăng ký</label>
@@ -465,6 +446,8 @@
       },
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>
