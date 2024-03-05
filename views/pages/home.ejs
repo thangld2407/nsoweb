@@ -1,61 +1,92 @@
-<title>NSO RAZE</title>
+<div class="card-body">
+  <div class="card-title h5">Bài viết mới</div>
+  <hr>
+  <div>
 
-<div class="container">
-    <div class="slider">
-     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-         <div class="carousel-indicators">
-           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-           
-         </div>
-         <div class="carousel-inner">
-           <div class="carousel-item active">
-             <img src="/assets/images/banner3.jpg" class="d-block w-100" alt="banner1">
-           </div>
-          
-          
-         </div>
-         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-           <span class="visually-hidden">Previous</span>
-         </button>
-         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-           <span class="visually-hidden">Next</span>
-         </button>
-       </div>
-    </div>
-    <div class="welcome">
-         <div class="title">
-             <h3>CHÀO MỪNG CÁC BẠN ĐẾN VỚI NSO BLUE</h3>
-         </div>
-         <div class="content">
-             <p class="mark">- SERVER NÀY DO ĐỘI NGŨ THANH SON PHÁT TRIỂN VÀ VẬN HÀNH!</p>
-             <p>- Server này có nhiều chức năng mới lạ cũng như lượng tài nguyên đủ để anh em sử dụng.</p>
-             <p>- Server nhiều item mới lạ sẽ sớm được cập nhật nếu đông đảo người chơi có nhu cầu!</span></p>
-             <p>- Các chức năng như <span class="mark">Luyện bí kíp, Nhiệm vụ, Nhiệm vụ danh vọng, Mắt,...</span> sẽ sớm được cập nhật nếu đông đảo người chơi có nhu cầu!</p>
-            
-             <p>- Các vấn đề liên quan tới <span class="mark">Game, Báo lỗi, Góp ý, Thông báo</span> từ server bạn có thể xem tại <a href="{{route('index.news')}}">Tin tức</a> | <a href="https://zalo.me/g/kjffpd593">Group</a> | <a href="https://zalo.me/g/kjffpd593">Box Zalo</a></p>
-             <br>
-             <p><span class="italicized">** Server này do những người am hiểu nhất về từng chỉ số của game Ninja School phát triển và vận hành...</span></p>
-         </div>
-         <hr>
-         <div class="title">
-             <h3>LỐI TẮT</h3>
-         </div>
-         <div class="content">
-            <div class="shortcut">
-                <!-- <a href="/tin-tuc" class="btn btn-nso"><i class="fas fa-bell"></i> TIN TỨC</a> -->
-                <%if(isLogin){%>
-                  <a href="/trang-ca-nhan" class="btn btn-nso"><i class="fa-solid fa-circle-info"></i> Thông tin tài khoản</a>
-                  <!-- <a href="/chuc-nang" class="btn btn-nso"><i class="fas fa-money-check-alt"></i> Nạp tiền</a> -->
-               <% } else { %>
-                 <a href="/dang-nhap" class="btn btn-nso"><i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP</a>
-                 <a href="/dang-ky" class="btn btn-nso"><i class="fa-solid fa-user-plus"></i> ĐĂNG KÝ</a>
-              <% } %>
-                <a href="/tai-ve" class="btn btn-nso"><i class="fa-solid fa-download"></i> TẢI GAME</a>
-                <a href="https://zalo.me/g/yqvhhy088" target=”_blank” class="btn btn-primary"><i class="fa-solid fa-users"></i> GROUP FACEBOOK</a>
-				        <a href="https://zalo.me/g/yqvhhy088" target=”_blank” class="btn btn-primary"><i class="fa-solid fa-users"></i> BOX ZALO</a>
-            </div>
-         </div>
-    </div>
+      <div class="post-item d-flex align-items-center my-2">
+          <div class="post-image"><img src="/assets/images/avatar.png"
+                  alt="🔥🤯Thông báo Open chinh thuc vao ngay ...🤯🔥">
+          </div>
+          <div>
+              <a class="fw-bold post-title" href="/post/00">🔥🤯Thông báo Open chinh thuc vao ngay
+                  ...🤯🔥 </a>
+              <div class="text-muted font-weight-bold">Lượt xem: 5, Bình luận: 0</div>
+          </div>
+      </div>
+      <div class="post-item d-flex align-items-center my-2">
+          <div class="post-image"><img src="/assets/images/avatar.png"
+                  alt="🍃Cẩm nang tân thủ cho người mới🍃">
+          </div>
+          <div>
+              <a class="fw-bold post-title" href="/post/01">🍃Cẩm nang tân thủ cho người mới🍃
+              </a>
+              <div class="text-muted font-weight-bold">Lượt xem: 5, Bình luận: 0</div>
+          </div>
+      </div>
+      <div class="post-item d-flex align-items-center my-2">
+          <div class="post-image">
+              <img src="/assets/images/avatar.png" alt="🔥GiftCode Khủng🔥">
+          </div>
+          <div>
+              <a class="fw-bold post-title" href="/post/02">🔥GiftCode Khủng🔥 </a>
+              <div class="text-muted font-weight-bold">Lượt xem: 7, Bình luận: 0</div>
+          </div>
+      </div>
+
+
+      <!--   <div class="post-item d-flex align-items-center my-2">
+<div class="post-image"><img src="/assets/images/avatar.png" alt="🔥🤯Thông báo Open chinh thuc vao ngay ...🤯🔥">
+</div>
+<div>
+<a class="fw-bold post-title" href="/post/opentest">🔥🤯Thông báo Open chinh thuc vao ngay ...🤯🔥 </a>
+<div class="text-muted font-weight-bold">Lượt xem: 5, Bình luận: 0</div>
+</div>
+</div>
+<div class="post-item d-flex align-items-center my-2">
+<div class="post-image"><img src="/assets/images/avatar.png" alt="🍃Cẩm nang tân thủ cho người mới🍃">
+</div>
+<div>
+<a class="fw-bold post-title" href="/post/01">🍃Cẩm nang tân thủ cho người mới🍃 </a>
+<div class="text-muted font-weight-bold">Lượt xem: 5, Bình luận: 0</div>
+</div>
+</div>
+<div class="post-item d-flex align-items-center my-2">
+<div class="post-image">
+<img src="images/avatar.png" alt="🔥GiftCode Khủng🔥">
+</div>
+<div>
+<a class="fw-bold post-title" href="/post/02">🔥GiftCode Khủng🔥 </a>
+<div class="text-muted font-weight-bold">Lượt xem: 7, Bình luận: 0</div>
+</div>
+</div>-->
+  </div>
+  <div class="pt-2 card-title h5">Danh mục</div>
+  <hr>
+  <div>
+      <div class="post-item d-flex align-items-center my-2">
+          <div class="post-image">
+              <img src="/assets/images/obito.png" alt="Hướng dẫn - Tính năng">
+          </div>
+          <div>
+              <a class="fw-bold text-danger" href="/post/huongdan-tinhnang">Hướng dẫn - Tính
+                  năng</a>
+              <div class="text-muted font-weight-bold">Các bài viết hướng dẫn về tính năng trên
+                  GAME</div>
+          </div>
+      </div>
+  </div>
+  <div class="mt-4">
+      <div class="card-title h5">Giới thiệu</div>
+      <hr>
+      <div class="mx-2 fs-6">Ninja Kids School là một game thế giới mở với chủ đề trường học
+          ninja, nơi người chơi sẽ được trải nghiệm cuộc sống của một ninja thực thụ. Trong game,
+          người chơi có thể tham gia vào các hoạt động giải trí như săn bắn quái vật, khám phá khu
+          rừng bí ẩn, hoặc tham gia đấu trường PvP để thử thách và cạnh tranh với những ninja
+          khác. Ngoài ra, game còn có nhiều nhiệm vụ và thử thách khác nhau cho người chơi hoàn
+          thành, từ đó thu thập được điểm kinh nghiệm và trang bị vũ khí, trang phục mới. Với đồ
+          họa đẹp mắt, âm thanh sống động và nội dung đa dạng, Ninja Kids School sẽ đem đến
+          cho người chơi những trải nghiệm tuyệt vời và thỏa mãn niềm đam mê với văn hóa ninja.
+
+      </div>
+  </div>
 </div>

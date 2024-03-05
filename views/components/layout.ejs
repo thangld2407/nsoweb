@@ -1,135 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon.png"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.0/css/dataTables.bootstrap5.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-    
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
 
-    <div class="header">
-        <nav class="navbar navbar-expand-lg text-bg-nso bg-nso">
-            <div class="container">
-                <a class="navbar-brand logo" href="/">Ninja School</a>
-                    <div class="d-flex">
-                        <a href="#" class="menu-toggle" id="open-menu-toggle"><i class="fa-solid fa-align-justify"></i></a>
-                        <div class="mobile-menu" id="navbarText">
-                            <a href="#" class="menu-toggle" id="close-menu-toggle"><i class="fa-solid fa-align-justify"></i></a>
-                            <ul class="navbar-nav">
-                              <li class="nav-item">
-                                  <a class="nav-link" href="/tai-ve"><i class="fa-solid fa-download"></i> TẢI GAME</a>
-                              </li>
-                              <li class="nav-item">
-                                  <!-- <a class="nav-link" href="/tin-tuc"><i class="fas fa-bell"></i> TIN TỨC</a> -->
-                              </li>
-                              <%if(!isLogin) { %>
-                                  <li class="nav-item">
-                                      <a class="nav-link" href="/dang-nhap"><i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP</a>
-                                  </li>
-                                  <li class="nav-item">
-                                      <a class="nav-link" href="/dang-ky"><i class="fas fa-user-edit"></i> ĐĂNG KÝ</a>
-                                  </li>
-                              <% } else { %>
-                                  <li class="nav-item">
-                                      <!-- <a class="nav-link" href="/huong-dan"><i class="fas fa-book-open"></i> HƯỚNG DẪN NẠP TIỀN</a> -->
-                                  </li>
-                                  <li class="nav-item">
-                                      <!-- <a class="nav-link " href="/chuc-nang"><i class="fas fa-bookmark"></i> CHỨC NĂNG</a> -->
-                                  </li>
-                                  <li class="nav-item dropdown">
-                                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      <i class="fa-solid fa-user"></i> TÀI KHOẢN
-                                      </a>
-                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <li><p class="dropdown-item"><i class="fas fa-coins"></i> Bee coin: <span style="color: red;"><%=user.amount%></span></p></li>
-                                      <li><a class="dropdown-item" href="/trang-ca-nhan"><i class="fa-solid fa-circle-info"></i> Thông tin tài khoản</a></li>
-                                      <li><a class="dropdown-item" href="/lich-su"><i class="fas fa-history"></i> Lịch sử giao dịch</a></li>
-                                      <li><a class="dropdown-item" href="/doi-mat-khau"><i class="fas fa-exchange-alt"></i> Đổi mật khẩu</a></li>
-                                      <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item" href="/dang-xuat"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
-                                      </ul>
-                                  </li>
-                            <%  }%>
-                       
-                          </ul>
+<head>
+  <meta property="og:image" content="/assets/images/bannerGif.gif">
+  <meta charset="utf-8">
+  <link rel="icon" href="/assets/images/icon.png">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <meta name="title" content="NSO Kids Funny - Ninja School Online">
+  <meta name="description" content="nsokids - Tham gia trường học ninja để trở thành một nhẫn giả">
+  <meta name="keywords" content="Nso, ninja, ninja school, ninja school online, nsocan, ninja lậu, nsoz, nsoplus, nsoeco, eco, nsokids">
+  <meta name="author" content="nsokids">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://nsokids.fun/">
+  <meta property="og:title" content="NSO Kids Funny - Ninja School Online">
+  <meta property="og:description" content="Tham gia trường học ninja để trở thành một nhẫn giả thực thụ">
+  <meta property="og:image" content="thumbnail.png">
+  <meta property="og:image:alt" content="nsokids.fun">
+  <link rel="apple-touch-icon" href="logo1.png">
+  <title>NSO Kids - Ninja School Online</title>
+  <link href="/assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/css/styles1.css">
+  <link rel="stylesheet" type="text/css" href="/assets/css/styles2.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+  <div id="root">
+    <div class="container">
+      <div class="main">
+        <div class="text-center card">
+          <div class="card-body">
+            <div class="">
+              <a href="/">
+                <img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;">
+              </a>
+            </div>
+            <div class="mt-3">
+              <div class="mt-3">
+                <% if(isLogin) { %>
+                <div class="mt-3">
+                  <a class="mb-3 px-2 py-1 fw-semibold text-dark bg-success bg-opacity-25 border border-success border-opacity-75 rounded-2 link-success cursor-pointer" href="/user">
+                    <span>thangld - 0 C </span>
+                  </a>
+                  <span>&nbsp;</span>
+                  <a class="mb-3 px-2 py-1 fw-semibold text-dark bg-success bg-opacity-25 border border-success border-opacity-75 rounded-2 link-success cursor-pointer" href="/logour">
+                    <span>Đăng xuất</span>
+                  </a>
+                </div>
+                <% } %>
+
+                <body>
+                  <main class="flex-grow-1 flex-shrink-1">
+                    <!-- Modal HTML -->
+                    <div id="regOK" class="modal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <span class="close" onclick="closeRegOK()">&times;</span>
+                          <div class="modal-body text-center">
+                            <a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a>
+                            <h2>Đăng Ký thành công</h2>
+                            <p id="regOKContent"></p>
+                            <button class="modal-close-btn" onclick="closeRegOK()">OK</button>
+                          </div>
                         </div>
-                        <div class="nav-mn">
-                          <ul class="navbar-nav">
-                              <li class="nav-item">
-                                  <a class="nav-link" href="/tai-ve"><i class="fa-solid fa-download"></i> TẢI GAME</a>
-                              </li>
-                              <!-- <li class="nav-item">
-                                  <a class="nav-link" href="/tin-tuc"><i class="fas fa-bell"></i> TIN TỨC</a>
-                              </li> -->
-                              <%if(!isLogin) { %>
-                                  <li class="nav-item">
-                                      <a class="nav-link" href="/dang-nhap"><i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP</a>
-                                  </li>
-                <li class="nav-item">
-                                      <a class="nav-link" href="/dang-ky"><i class="fas fa-user-edit"></i> ĐĂNG KÝ</a>
-                                  </li>
-                              <% } else { %>
-                                  <li class="nav-item">
-                                      <!-- <a class="nav-link" href="/huong-dan"><i class="fas fa-book-open"></i> HƯỚNG DẪN NẠP TIỀN</a> -->
-                                  </li>
-                                  <li class="nav-item">
-                                      <!-- <a class="nav-link " href="/chuc-nang"><i class="fas fa-bookmark"></i> CHỨC NĂNG</a> -->
-                                  </li>
-                                  <li class="nav-item dropdown">
-                                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      <i class="fa-solid fa-user"></i> TÀI KHOẢN
-                                      </a>
-                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                      <li><p class="dropdown-item"><i class="fas fa-coins"></i> Lượng: <span style="color: red;"><%=user.luong%></span></p></li>
-                                      <li><a class="dropdown-item" href="/trang-ca-nhan"><i class="fa-solid fa-circle-info"></i> Thông tin tài khoản</a></li>
-                                      <li><a class="dropdown-item " href="/lich-su"><i class="fas fa-history"></i> Lịch sử giao dịch</a></li>
-                                      <li><a class="dropdown-item" href="/doi-mat-khau"><i class="fas fa-exchange-alt"></i> Đổi mật khẩu</a></li>
-                                      <li><hr class="dropdown-divider"></li>
-                                      <li><a class="dropdown-item" href="/dang-xuat"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
-                                      </ul>
-                                  </li>
-                              <% } %>
-                          </ul>
                       </div>
                     </div>
-                
+                    <!-- Modal HTML -->
+                    <div id="regFailModal" class="modal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <span class="close" onclick="closeRegFailModal()">&times;</span>
+                          <div class="modal-body text-center">
+                            <a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a>
+                            <h2>Đăng ký thất bại</h2>
+                            <p id="regFailModalContent"></p>
+                            <button class="modal-close-btn" onclick="closeRegFailModal()">OK</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                    <!-- Modal HTML -->
+                    <div id="loginFailModal" class="modal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <span class="close" onclick="closeLoginFailModal()">&times;</span>
+                          <div class="modal-body text-center">
+                            <a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a>
+                            <h2>Đăng nhập thất bại</h2>
+                            <p id="loginFailModalContent"></p>
+                            <button class="modal-close-btn btn btn-danger" onclick="closeLoginFailModal()">OK</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <script>
+                      function openRegOK() {
+                        var regOK = document.getElementById('regOK');
+                        regOK.style.display = 'block';
+                      }
+
+                      function closeRegOK() {
+                        var regOK = document.getElementById('regOK');
+                        regOK.style.display = 'none';
+                      }
+
+                      function openRegFailModal() {
+                        var regFailModal = document.getElementById('regFailModal');
+                        regFailModal.style.display = 'block';
+                      }
+
+                      function closeRegFailModal() {
+                        var regFailModal = document.getElementById('regFailModal');
+                        regFailModal.style.display = 'none';
+                      }
+
+                      function openLoginFailModal() {
+                        var loginFailModal = document.getElementById('loginFailModal');
+                        loginFailModal.style.display = 'block';
+                      }
+
+                      function closeLoginFailModal() {
+                        var loginFailModal = document.getElementById('loginFailModal');
+                        loginFailModal.style.display = 'none';
+                      }
+                    </script>
+
+                    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLoginLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="my-2">
+                              <div class="text-center"><a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a></div>
+                            </div>
+                            <form id="formLogin" class="py-3 mx-3 needs-validation" id="login" novalidate>
+
+                              <div class="mb-2">
+                                <div class="input-group">
+                                  <input name="username" id="username" type="text" autocomplete="off" placeholder="Tên đăng nhập" class="form-control form-control-solid" value="" minlength="5" required>
+                                  <div class="invalid-feedback">Không được bỏ trống
+                                  </div>
+                                </div>
+
+                              </div>
+                              <div class="mb-2">
+                                <div class="input-group">
+                                  <input name="password" id="password" type="password" autocomplete="off" placeholder="Mật khẩu" class="form-control form-control-solid" value="" minlength="5" required>
+                                  <div class="invalid-feedback">Không được bỏ trống
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="text-center mt-3">
+                                <button id="btnLogin" type="button" class="me-3 btn btn-primary" onclick="onLogin(event)">Đăng
+                                  nhập</button><button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Hủy bỏ</button>
+                                <div class="pt-3">Bạn chưa có tài khoản? <a data-bs-toggle="modal" data-bs-target="#modalRegister" class="link-primary cursor-pointer">Đăng ký
+                                    ngay</a></div>
+                                <div><a data-bs-toggle="modal" data-bs-target="#modalForgotPass" class="link-primary cursor-pointer">Quên mật
+                                    khẩu</a></div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!---->
+                    <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="modalRegisterLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <div class="my-2">
+                              <div class="text-center"><a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a></div>
+                            </div>
+                            <form action="#" method="post" class="py-3 mx-3 needs-validation" id="register">
+                              <!--thông báo đăng ký-->
+                              <div class="mb-2">
+                                <label class="fw-semibold">Tên đăng nhập</label>
+                                <div class="input-group"><input name="regname" id="regname" type="text" autocomplete="off" placeholder="Nhập tên đăng nhập" class="form-control form-control-solid" value="" oninput="validateUsername(this)"></div>
+                                <div class="invalid-feedback">Không được bỏ trống</div>
+                              </div>
+                              <div class="mb-2">
+                                <label class="fw-semibold">Số điện thoại</label>
+
+                                <div class="input-group"><input name="regphone" id="regphone" type="tel" autocomplete="off" placeholder="Nhập số điện thoại" pattern="[0-9]+" title="Số điện thoại chỉ được chứa số. Vui lòng không sử dụng ký tự đặc biệt." class="form-control form-control-solid" value=""></div>
+                                <div class="invalid-feedback">Không được bỏ trống</div>
+                              </div>
+
+                              <div class="mb-2">
+                                <label class="fw-semibold">Mật khẩu</label>
+                                <div class="input-group"><input name="regpass" id="regpassregpass" type="password" autocomplete="off" placeholder="Nhập mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)"></div>
+                                <div class="invalid-feedback">Không được bỏ trống</div>
+                              </div>
+                              <div class="mb-2">
+                                <label class="fw-semibold">Nhập lại mật khẩu</label>
+                                <div class="input-group"><input name="regrepass" id="regrepass" type="password" autocomplete="off" placeholder="Nhập mật khẩu" class="form-control form-control-solid" value="" oninput="validatePassword(this)"></div>
+                                <div class="invalid-feedback">Không được bỏ trống</div>
+                              </div>
+                              <div class="text-center mt-3">
+                                <button type="submit" class="me-3 btn btn-primary">Đăng
+                                  ký</button><button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Hủy bỏ</button>
+                                <div class="pt-3">Bạn đã có tài khoản? <a data-bs-toggle="modal" data-bs-target="#modalLogin" class="link-primary cursor-pointer">Đăng nhập
+                                    ngay</a></div>
+                                <div><a data-bs-toggle="modal" data-bs-target="#modalForgotPass" class="link-primary cursor-pointer">Quên mật
+                                    khẩu</a></div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <script>
+                        function validateUsername(input) {
+                          // Sử dụng biểu thức chính quy để kiểm tra tài khoản
+                          var pattern = /^[a-z0-9]{4,}$/;
+                          var isValid = pattern.test(input.value);
+
+                          if (!isValid) {
+                            input.setCustomValidity("Tài khoản không hợp lệ. Tài khoản chỉ được chứa ký tự chữ thường và số, ít nhất 4 ký tự và không có khoảng trắng.");
+                          } else {
+                            input.setCustomValidity("");
+                          }
+                        }
+
+                        function validatePassword(input) {
+                          // Sử dụng biểu thức chính quy để kiểm tra mật khẩu
+                          var pattern = /^[a-z0-9]{4,}$/;
+                          var isValid = pattern.test(input.value);
+
+                          if (!isValid) {
+                            input.setCustomValidity("Mật khẩu không hợp lệ. Mật khẩu chỉ được chứa ký tự chữ thường và số, ít nhất 4 ký tự và không có khoảng trắng.");
+                          } else {
+                            input.setCustomValidity("");
+                          }
+                        }
+
+                        async function onLogin(e) {
+                          e.preventDefault()
+                          const data = $('#formLogin').serialize();
+                          const type = 'POST';
+                          $.ajax({
+                            type: type,
+                            url: "/api/auth/login",
+                            data: data,
+                            dataType: 'json',
+                            success: function(response) {
+                              const {
+                                status_code
+                              } = response;
+                              if (status_code) {
+                                openRegOK()
+                                setTimeout(function() {
+                                  window.location.href = "/";
+                                }, 1300);
+                              } else {
+                                $('#modalLogin').modal('hide')
+                                openLoginFailModal()
+                                setTimeout(() => {
+                                  window.location.reload()
+                                }, 500)
+                              }
+                            },
+                            error: function(response) {
+                              $('#modalLogin').modal('hide')
+                              openLoginFailModal()
+                              setTimeout(() => {
+                                window.location.reload()
+                              }, 500)
+                            }
+                          });
+                        }
+                      </script>
+                    </div>
+                  </main>
+                </body>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="mb-2">
+          <div class="row text-center justify-content-center row-cols-2 row-cols-lg-6 g-2 g-lg-2 mt-1">
+            <div class="col">
+              <div class="px-2"><a class="btn btn-menu btn-success w-100 fw-semibold false" href="/">Trang
+                  chủ</a>
               </div>
             </div>
-          </nav>
-    </div>
-
-    <div class="main">
-      <%-include(page) %>
-    </div>
-
-    <div class="footer">
-        <div class="container-fluid">
-            <hr>
-            <div class="footer-content">
-                <p>Trò chơi không có bản quyền chính thức.</p>
-                <p>Vui lòng cân nhắc kỹ trước khi tham gia.</p>
-                <p>Chơi game quá 180 phút 1 ngày sẽ ảnh hướng xấu tới sức khoẻ</p>
+            <div class="col">
+              <div class="px-2">
+                <a href="/download" class="btn btn-menu btn-success w-100 fw-semibold false">Tải game</a>
+              </div>
             </div>
+            <div class="col">
+              <% if(!isLogin) { %>
+              <div class="px-2">
+                <a class="btn btn-menu btn-success w-100 fw-semibold false" data-bs-toggle="modal" data-bs-target="#modalLogin">Đăng nhập</a>
+              </div>
+              <% } %>
+            </div>
+            <div class="col">
+              <div class="px-2"><a class="btn btn-menu btn-success w-100 fw-semibold false" href="https://zalo.me/g/yqvhhy088">Box Zalo</a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/js/all.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.0/js/dataTables.bootstrap5.min.js"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/assets/js/main2.js"></script>
+        <div class="modal fade" id="modalActive" tabindex="-1" aria-labelledby="modalActiveLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="my-2">
+                  <div class="text-center"><a href="index.html"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a></div>
+                </div>
+                <div class="text-center fw-semibold">
+                  <div class="fs-6 mb-2">Xác nhận kích hoạt tài khoản</div>
+                  <div id="noti-active"></div>
+                  <span>Vui lòng thoát game trước khi xác nhận kích hoạt</span>
+                  <span>Sau khi kích hoạt, bạn sẽ mở khóa các tính năng giao dịch</span>
+                  <div class="text-success fw-bold">Phí kích hoạt: 10000 PCoin</div>
+                  <div class="mt-2"><a type="submit" id="active" class="btn-rounded btn btn-primary btn-sm" href="/active">Kích hoạt ngay</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalQuangCao" tabindex="-1" aria-labelledby="modalQuangCaoLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="my-2">
+                  <div class="text-center"><a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 200px;"></a></div>
+                </div>
+                <div class="text-center fw-semibold">
+                  <div id="noti" style="text-align: center;"></div>
+                  <div class="text-white text-center mb-2" id="waiting-times"></div>
+                  <div class="fs-6 mb-2" id="rainbowText">Thuê làm Web,Setup Sever</div>
+                  <div id="noti-active"></div>
+                  <span id="blinkingText" class="blink">Liên hệ ngay</span>
+                  <a class="w-100 fw-semibold" href="https://www.facebook.com/thangld2407">
+                    <div class="mt-2 aci">
+                      <button type="button" onclick="handleConfirm()" class="btn-rounded btn btn-primary btn-sm">Nhận báo giá</button>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="modalUnlock" tabindex="-1" aria-labelledby="modalUnlockLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="my-2">
+                  <div class="text-center"><a href="/"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a></div>
+                </div>
+                <div class="text-center fw-semibold">
+                  <div class="fs-6 mb-2">Để mở khóa tài khoản</div>
+                  <div id="noti-active"></div>
+                  <span>Bạn cần liên hệ <a class="text-success fw-bold" href="https://zalo.me/g/yqvhhy088">Admin</a> để được hỗ trợ.</span>
+                  <span>Bạn phải làm cái gì thì mới bị khóa chứ, Đúng không</span>
+                  <!--<div class="text-success fw-bold">Phí kích hoạt: 10000 PCoin</div>-->
+                  <div class="mt-2"><a type="submit" id="active" class="btn-rounded btn btn-primary btn-sm" href="https://zalo.me/g/yqvhhy088">Thanh minh với Admin</a></div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div z-index="1" class="modal fade" id="modalForgotPass" tabindex="-1" aria-labelledby="modalForgotPassLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="my-2">
+                  <div class="text-center"><a href="home.php"><img class="logo" alt="Logo" src="/assets/images/bannerGif.gif" style="max-width: 150px;"></a></div>
+                </div>
+                <form method="post" class="py-3 mx-3 needs-validation" id="forgotpass">
+                  <div class="mt-2"><a class="text-danger fw-semibold mt-3">Tính năng lấy lại tài
+                      khoản hiện đang bảo trì, Vui lòng liên hệ <a class="text-success fw-bold" href="https://zalo.me/g/yqvhhy088">Admin</a> <a class="text-danger fw-semibold mt-3">nhé!</a></a></div>
+                  <div class="mb-2 tuan1">
+                    <label class="fw-semibold">Tên đăng nhập</label>
+                    <div class="input-group"><input name="username" id="username" type="text" autocomplete="off" placeholder="Nhập tên đăng nhập" class="form-control form-control-solid" value=""></div>
+                  </div>
+                  <div class="mb-2 tuan1">
+                    <label class="fw-semibold">Địa chỉ mail đăng ký</label>
+                    <div class="input-group"><input name="fmail" id="fmail" type="email" autocomplete="off" placeholder="Nhập địa chỉ mail đăng ký" class="form-control form-control-solid" value=""></div>
+                  </div>
+                  <div class="mb-2">
+                    <label class="fw-semibold">Mã OTP</label>
+                    <div class="input-group"><input name="fcode" id="fcode" type="text" autocomplete="off" placeholder="Nhập mã OTP đã nhận" class="form-control form-control-solid" maxlength="6" value="">
+                      <a class="btn btn-danger" href="javascript:void(0)" onclick="sendOTP();" type="button">Gửi mã OTP</a>
+                    </div>
+                  </div>
+                  <div class="text-center mt-3">
+                    <div class="pt-3">Bạn đã có tài khoản? <a data-bs-toggle="modal" data-bs-target="#modalLogin" class="link-primary cursor-pointer">Đăng
+                        nhập ngay</a></div>
+                  </div>
+                </form>
+                <form method="post" class="py-3 mx-3 needs-validation" id="changePass">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <script>
+          $(document).ready(function() {
+            $('#modalQuangCao').modal('show');
+          });
+
+          function handleConfirm() {}
+        </script> -->
+
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+
+        <div class="card">
+          <%-include(page) %>
+        </div>
+        <div class="text-center my-2">
+          <div class="age-rule">
+            <img src="/assets/images/12.png" alt="Age Rule" height="12">
+            <span>Trò chơi dành cho người chơi 12 tuổi trở lên. Chơi quá 180 phút mỗi ngày sẽ có hại cho sức
+              khỏe</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
+
+</html>
+</main>
+</body>
+
+</html>
+
+<body>
+  <div class="overlay"></div>
+  <div id="fb-root"></div>
+  <script>
+    // Show loading
+    $(document).on({
+      ajaxStart: function() {
+        // $("body").addClass("loading");
+        $("#NotiflixLoadingWrap").removeClass('hide')
+      },
+      ajaxStop: function() {
+        // $("body").removeClass("loading");
+        $("#NotiflixLoadingWrap").addClass('hide')
+      },
+    });
+  </script>
+</body>
+
 </html>

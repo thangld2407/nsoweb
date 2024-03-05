@@ -48,7 +48,7 @@ routerClient.get('/dang-ky', (req, res) => {
 	});
 });
 
-routerClient.get('/tai-ve', (req, res) => {
+routerClient.get('/download', (req, res) => {
 	const user = req.session.user;
 	let isLogin = false;
 	if (user) {
@@ -63,12 +63,12 @@ routerClient.get('/tai-ve', (req, res) => {
 	});
 });
 
-routerClient.get('/dang-xuat', (req, res) => {
+routerClient.get('/logout', (req, res) => {
 	req.session.destroy();
 	res.redirect('/');
 });
 
-routerClient.get('/trang-ca-nhan', requireLogin, (req, res) => {
+routerClient.get('/user', requireLogin, (req, res) => {
 	const user = req.session.user;
 	let isLogin = false;
 	if (user) {
@@ -81,7 +81,7 @@ routerClient.get('/trang-ca-nhan', requireLogin, (req, res) => {
 	});
 });
 
-routerClient.get('/doi-mat-khau', requireLogin, (req, res) => {
+routerClient.get('/change-password', requireLogin, (req, res) => {
 	const user = req.session.user;
 	let isLogin = false;
 	if (user) {
@@ -93,6 +93,19 @@ routerClient.get('/doi-mat-khau', requireLogin, (req, res) => {
 		isLogin: isLogin
 	});
 });
+
+routerClient.get('/exchange', requireLogin , (req, res) => {
+	const user = req.session.user;
+	let isLogin = false;
+	if (user) {
+		isLogin = true;
+	}
+	res.render('./components/layout.ejs', {
+		page: '../pages/exchange.ejs',
+		user: isLogin ? user : {},
+		isLogin: isLogin
+	});
+});	
 
 routerClient.use('/auth', authAjax);
 

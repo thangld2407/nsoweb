@@ -1,22 +1,17 @@
-<title>Tải game</title>
-
-<div class="container">
-    <div class="chuc-nang">
-        <div class="title">
-            <h3>TẢI GAME</h3>
+    <div class="text-center">
+        <h4 class="fw-semibold mt-3 mb-3">Chạy giả lập Java (Độ ổn định cao, nhiều tính năng)</h4>
+        <div>
+            <%if(files) { %>
+                <% files.forEach(function(item){ %>
+                  <a href="<%=item.link%>" class="btn btn-danger me-1 mt-1"><%=item.name%></a>
+                <% }) %>
+              <% }%>
         </div>
-        <div class="content">
-            <div class="news">
-                <%if(files) { %>
-                  <% files.forEach(function(item){ %>
-                    <a href="<%=item.link%>" class="btn btn-success btn-login"><%=item.name%></a>
-                    <hr>
-                  <% }) %>
-                <% }%>
-            </div>
-           
+        <div class="mt-4">
+            <div class="h6">Hướng dẫn cách cài đặt</div><div>Bước 1: Tải Microemulator: <a href="https://angelchip.net/files/share/AngelChipEmulatorEXE.zip">AngelChipEmulator.zip</a>
         </div>
+        <div>Bước 2: Tải một trong các phiên bản bên trên (Gợi ý: bản 211)</div>
+        <div>Bước 3: Giải nén file AngelChipEmulator.zip đã tải ở bước 1</div>
+        <div>Bước 4: Mở ứng dụng AngelChipEmulator.exe ở thư mục đã giải nén</div>
+        <div>Bước 5: Kéo file game có đuôi .jar đã tải ở trên vào và bấm Start</div>Trước khi bấm Start các bạn căn chỉnh lại kích thước sao cho dễ chơi nhất nhé</div>
     </div>
-</div>
-
-

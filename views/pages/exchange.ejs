@@ -1,0 +1,168 @@
+<div class="text-center fw-semibold fs-5">Đổi ECoin ra Lượng
+  <div class="text-center"></div>
+  <form method="POST">
+
+    <span class="text-danger"></span>
+  </form>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="col-md-8">
+    <div class="row text-center justify-content-center row-cols-2 row-cols-lg-3 g-2 g-lg-2 my-1 mb-2">
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer " onclick="handleClick(10000)">
+            <div id="button-10000" class="recharge-method-item false recharge-method-item" style="height: 90px;"
+              data-value="10000">
+              <div class="text-primary">10,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">20,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(20000)">
+            <div id="button-20000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="20000">
+              <div class="text-primary">20,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">40,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(50000)">
+            <div id="button-50000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="50000">
+              <div class="text-primary">50,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">100,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(100000)">
+            <div id="button-100000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="100000">
+              <div class="text-primary">100,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">200,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(200000)">
+            <div id="button-200000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="200000">
+              <div class="text-primary">200,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">400,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(500000)">
+            <div id="button-500000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="500000">
+              <div class="text-primary">500,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">1000,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(1000000)">
+            <div id="button-1000000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="1000000">
+              <div class="text-primary">1,000,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">2,000,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(2000000)">
+            <div id="button-2000000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="2000000">
+              <div class="text-primary">2,000,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">4,000,000 lượng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="col">
+          <div class="w-100 fw-semibold cursor-pointer" onclick="handleClick(5000000)">
+            <div id="button-5000000" class="recharge-method-item false false recharge-method-item" style="height: 90px;"
+              data-value="5000000">
+              <div class="text-primary">5,000,000E</div>
+              <div class="center-text text-dark"><span>Nhận</span></div>
+              <div class="text-danger">9,999,999 lượng</div>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" name="amount" id="selected-amount" required="">
+      </div>
+    </div>
+    <div class="centered-container"><label class="chonnhanvat" style="height: 90px; width: 195px">
+        <input type="hidden" name="playername" value="thangld">
+        <img src="images/obito.png" alt="Hình ảnh nhân vật">
+        <span>thangld</span>
+      </label></div>
+    <div class="text-center" <p=""> Có 0 Lượng<p></p>
+    </div>
+    <!--<div class="text-center"<p> Có 0 Lượng</p></div>-->
+
+
+    <!-- <div class="text-center">
+           <div class="fw-semibold fs-6">Chọn nhân vật</div>
+        </div>
+        <div class="text-danger text-center fw-semibold mt-3 mb-2">Tài khoản chưa có nhân vật nào</div> -->
+    <div class="text-center mt-4">
+      <button id="confirm" type="button" onclick="onClickExchange()" class="w-50 rounded-3 btn btn-primary btn-sm">Xác
+        nhận</button>
+
+    </div>
+    <div class="text-center"><small class="fw-semibold"><a href="/lich-su">Lịch sử giao dịch</a></small></div>
+    <!-- </div>
+     </div>
+  </div>-->
+    <div class="modal fade" id="modalConfirmExchange" tabindex="-1" aria-labelledby="modalConfirmExchangeLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="my-2">
+              <div class="text-center"><a href="/"><img class="logo" alt="Logo" src="/images/logo.png"
+                    style="max-width: 200px;"></a></div>
+            </div>
+            <div class="text-center fw-semibold">
+              <div id="noti" style="text-align: center;"></div>
+              <div class="text-white text-center mb-2" id="waiting-times"></div>
+              <div class="fs-6 mb-2">Bạn thoát game trước khi thực hiện giao dịch chưa?</div>
+              <div id="noti-active"></div>
+              <span>Bạn phải thoát game trước khi giao dịch rồi vào lại game để tránh phát sinh lỗi trong quá trình cộng
+                tiền</span>
+              <div class="mt-2 aci"><button type="submit" id="confirmExchange" onclick="handleConfirm()"
+                  class="btn-rounded btn btn-primary btn-sm">Xác nhận đã thoát</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
