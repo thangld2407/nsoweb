@@ -4,6 +4,9 @@
       <div class="col">
         <a class="btn btn-sm btn-success w-100 fw-semibold active" href="/user" style="background-color: rgb(99, 171, 171);">Tài khoản</a>
       </div>
+      <div class="col">
+        <button class="btn btn-sm btn-danger w-100 fw-semibold active" onclick="removeBag()">Xoá hành trang</button>
+      </div>
     </div>
   </div>
   <hr>
@@ -11,7 +14,7 @@
     <tbody>
       <tr class="fw-semibold">
         <td>Tài khoản</td>
-        <td>thangld</td>
+        <td><%=user.username%></td>
       </tr>
       <tr class="fw-semibold">
         <td>Mật khẩu</td>
@@ -19,7 +22,7 @@
       </tr>
       <tr class="fw-semibold">
         <td>Số dư</td>
-        <td><a style="color:#157347;"><%=user.luong%> Luong</a></td>
+        <td><a style="color:#157347;"><%=user.luong && user.luong.toLocaleString()%> Luong</a></td>
       </tr>
       <tr class="fw-semibold">
         <td>Trạng thái</td>
@@ -29,3 +32,56 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  async function removeBag() {
+    Swal.fire({
+      title: 'Bạn hãy đăng xuất khỏi trò chơi trước khi xoá nhé. <br />Sử dụng 20.000 lượng để xoá hành trang! <br />Bạn chắc chắn muốn xoá?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Có!',
+      cancelButtonText: 'Không!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          type: "POST",
+          url: "/api/user/remove-bag",
+          dataType: 'json',
+          success: function(response) {
+            const {
+              status_code
+            } = response;
+            if (status_code) {
+              Swal.fire({
+                title: 'Đã xoá thành công',
+                icon: 'success',
+                showConfirmButton: false
+              });
+              setTimeout(function() {
+                window.location.reload()
+              }, 1500);
+            } else {
+              Swal.fire({
+                title: 'Lỗi rồi',
+                text: response.message,
+                icon: 'error',
+                showConfirmButton: true
+              });
+            }
+          },
+          error: function(response) {
+            Swal.fire({
+              title: 'Lỗi!',
+              text: 'Hãy liên hệ BQT để biết thêm chi tiết',
+              icon: 'error',
+              showConfirmButton: true
+            });
+          }
+        });
+      }
+
+    })
+  }
+</script>

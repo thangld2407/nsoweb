@@ -81,7 +81,7 @@ routerClient.get('/user', requireLogin, (req, res) => {
 	});
 });
 
-routerClient.get('/change-password', requireLogin, (req, res) => {
+routerClient.get('/change-password', (req, res) => {
 	const user = req.session.user;
 	let isLogin = false;
 	if (user) {

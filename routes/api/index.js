@@ -1,4 +1,5 @@
 const routerAuht = require('./module/auth');
+const routerUser = require('./module/user');
 
 const routerApi = require('express').Router();
 
@@ -9,5 +10,5 @@ routerApi.get('/', (req, res) => {
 });
 
 routerApi.use('/auth', routerAuht);
-
+routerApi.use('/user', routerUser)
 module.exports = routerApi;
